@@ -1,15 +1,16 @@
 dust.helpers.extend = function (chk, ctx, bodies, params) {
-	var key,
-	  saveData = chk.data,
-	  result;
+	var saveData = chk.data,
+		result;
 
 	chk.data = [];
-	result =  bodies.block(chk, ctx).data.join("");
+	result =  bodies.block(chk, ctx).data.join('');
 	chk.data = saveData;
 	if (params.filter) {
-		dust.filters[params.filter] = eval("false||"+result);
+/*jshint evil:true */
+		dust.filters[params.filter] = eval('false||'+result);
 	} else if (params.helper) {
-		dust.helpers[params.helper] = eval("false||"+result);
+/*jshint evil:true */
+		dust.helpers[params.helper] = eval('false||'+result);
 	}
-	return chk.write("");
+	return chk.write('');
 };

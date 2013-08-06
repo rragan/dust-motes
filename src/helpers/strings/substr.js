@@ -10,12 +10,12 @@ dust.helpers.substr = function (chunk, ctx, bodies, params) {
   // Use JavaScript substr if len is supplied.
   // Helpers need to return some value using chunk. Here we write the substring into chunk.
   // If you have nothing to output, just return chunk.write("");
-  if (!(typeof(len) === 'undefined')) {
+  if (typeof(len) !== 'undefined') {
     return chunk.write(str.substr(begin,len));
   }
-  if (!(typeof(end) === 'undefined')) {
+  if (typeof(end) !== 'undefined') {
     return chunk.write(str.slice(begin,end));
   }
   return chunk.write(str);
-}
+};
 
