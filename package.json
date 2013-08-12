@@ -1,35 +1,37 @@
 {
-    "name": "dust-motes",
-    "description": "Collection of dust helpers/filters.",
-    "version": "0.0.1",
-    "homepage": "https://github.com/rragan/dust-motes",
-    "author": {
-        "name": "rragan",
-        "url": "https://github.com/rragan/rragan/dust-motes"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/rragan/dust-motes.git"
-    },
-    "bugs": {
-        "url": "https://github.com/rragan/dust-motes/issues"
-    },
-    "main": "index.js",
-    "engines": {
-        "node": ">= 0.8.0"
-    },
-    "scripts": {
-        "test": "grunt test"
-    },
-    "dependencies": {
-        "dustjs-linkedin": "~2.0.0"
-    },
-    "devDependencies": {
-        "chai": "~1.5.0",
-        "grunt": "~0.4.1",
-        "grunt-contrib-clean": "~0.4.0",
-        "grunt-contrib-jshint": "~0.6.0",
-        "grunt-mocha-test": "~0.2.0",
-        "should": "~1.2.2"
-    }
+  "name": "dust-motes",
+  "description": "Collection of dust helpers/filters.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/rragan/dust-motes",
+  "author": {
+    "name": "rragan",
+    "url": "https://github.com/rragan/rragan/dust-motes"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rragan/dust-motes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rragan/dust-motes/issues"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "dustjs-linkedin": "~2.0.0",
+    "dustjs-helpers": "~1.1.1",
+    "chai": "~1.5.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-mocha-test": "~0.2.0",
+    "should": "~1.2.2",
+    "grunt-simple-mocha": "~0.4.0"
+  }
 }

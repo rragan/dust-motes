@@ -12,13 +12,15 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
 
     // Run mocha tests.
-    mochaTest: {
-      files: ['test/**/*_test.js']
-    },
-    mochaTestConfig: {
+    simplemocha: {
       options: {
-        reporter: 'nyan'
-      }
+	  globals:['should'],
+	  timeout: 3000,
+	  ignoreLeaks: false,
+	  ui: 'bdd',
+  	  reporter: 'tap'
+        },
+	all: {src: ['test/**/*.js'] }
     },
 
     jshint: {
@@ -36,8 +38,9 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-simple-mocha');
 
   // By default, build templates using helpers and run all tests.
   grunt.registerTask('default',  ['jshint']);
+  grunt.registerTask('default',  ['simplemocha']);
 };
