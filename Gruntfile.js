@@ -41,6 +41,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-simple-mocha');
 
   // By default, build templates using helpers and run all tests.
-  grunt.registerTask('default',  ['jshint']);
-  grunt.registerTask('default',  ['simplemocha']);
+  grunt.registerTask('jshint',  ['jshint']);
+  grunt.registerTask('test',  ['simplemocha']);
 };

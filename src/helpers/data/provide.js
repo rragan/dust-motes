@@ -1,4 +1,4 @@
-dust.helpers.defineParams = function (chk, ctx, bodies) {
+dust.helpers.provide = function (chk, ctx, bodies) {
   var resData,
     paramVals = {},
     k,
