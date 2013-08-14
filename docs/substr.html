@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Dust-motes : Repository for contributed helper and filter extensions to dust">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css"></link>
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/bootstrap/2.3.2/css/bootstrap-responsive.css"></link>
+
+    <title>Dust-motes</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div class="hdr">
+          <h1 class="hdr-title">Dust-motes</h1>
+          <h2 class="desc">HELPERS / CONTENT
+    </h2></div>
+  
+  
+<div class="container">
+  <div class="span12">  
+  <div class="row-fluid">
+    <div class="span3">
+        <ul class="nav">
+          <li> <a href="http://stage2dev700.qa.paypal.com:8000/dust-motes/docs/helpers-content.html">Content</a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://stage2dev700.qa.paypal.com:8000/dust-motes/docs/helpers-data.html">Data</a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://stage2dev700.qa.paypal.com:8000/dust-motes/docs/helpers-html.html">HTML</a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://stage2dev700.qa.paypal.com:8000/dust-motes/docs/helpers-miscelaneous.html">Miscellaneous</a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://stage2dev700.qa.paypal.com:8000/dust-motes/docs/helpers-strings.html">Strings</a> </li>
+        </ul>
+    </div>
+    
+    <div class="span9">
+        <h3>Control</h3>
+        <p></p><h4>{@iterate key=obj sort=xxx /}</h4><p></p>
+          <p></p><p><em>Iterate over a JavaScript object</em></p><p></p>
+          <p></p><p>Parameters:
+          <ul>
+          <li>key : object to iterate over</li>
+         </ul>
+         <ul>
+         <li>sort : Optional parameter to get sorted output based on the keys. Value can be "asc"
+         for ascending sort, "desc" for descending sort or any other string that defines a user-supplied comparison function for the sort.</li>
+     </ul>
+    </p>
+    <p>iterate provides a mechanism for looping over all the keys of a JavaScript object. Since there is no guaranteed
+    ordering of the keys, you should use the optional sort parameter if you care about portabiity in what you generate.
+    </p>
+    <p>
+    Within the body of the iterate helper, three values are available:
+    <ul>
+      <li>$key - the property name</li>
+      <li>$value - the value of the property</li> 
+      <li>$type - the result of typeof on the value</li> 
+    </ul>
+    </p>
+    <p>
+    If you want some other compare ordering other than the default string comparison, you can supply a
+    compare function. Here is an example that numerically orders the keys:
+
+
+<pre><code>
+var compareNumbers = function(a,b) {
+    var aa= parseInt(a, 10);
+    var bb = parseInt(b, 10);
+    return aa-bb;
+}
+</code></pre>
+
+{@iterate key=obj sort="compareNumbers"}{$key}:{$value} {/iterate}
+</pre>
+
+Your compare function must exist in the dust globals and can be put there by code like this:
+
+<pre><code>
+var base = dust.makeBase({"compareNumbers": compareNumbers});
+var code = '{@iterate key=obj sort="compareNumbers"}{$key}:{$value} {/iterate}';
+dust.render(template, base.push(context), function (err, out) {
+    "do something with the output"
+  });
+</code></pre>
+    <p>Examples:
+
+<pre><code>
+{@substr str="abcdefg" begin="0" end="3"/}
+  Output: abc
+
+{@substr str="abcdefg" begin="1" len="4"/}
+  Output: bcde
+</code></pre>
+    </p>
+  </div>
+</div>
+</div>
+</div>
+
+
+</body></html>
+
