@@ -1,16 +1,27 @@
-dust.helpers.provide = function (chk, ctx, bodies) {
+dust.helpers.provide = function provide(chunk, ctx, bodies, params) {
+  'use strict';
   var resData,
     paramVals = {},
     k,
-    saveData = chk.data;
+    localCtx = ctx,
+    saveData = chunk.data;
+
+  if (params) {
+    localCtx = ctx.push(params); // make params available to all bodies
+  }
 
   for (k in bodies) {
     if (k !== 'block') {
-      chk.data = [];
-      resData = JSON.parse(bodies[k](chk, ctx).data.join(''));
+      chunk.data = [];
+      resData = JSON.parse(bodies[k](chunk, localCtx).data.join(''));
       paramVals[k] = resData;
     }
   }
-  chk.data = saveData;
-  return bodies.block(chk, ctx.push(paramVals));
+  chunk.data = saveData;
+
+  // combine block-defined params with any existing ones.
+  // Block param overrides if name duplicates regular 11Guparam
+  return bodies.block(chunk, localCtx.push(paramVals));
+
 };
+
