@@ -20,7 +20,7 @@
 
     <div class="hdr">
           <h1 class="hdr-title">Dust-motes</h1>
-          <h2 class="desc">HELPERS / STRINGS
+          <h2 class="desc">HELPERS / MISCELLANEOUS
     </h2></div>
   
   
@@ -37,39 +37,43 @@
           <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-html.html">HTML</a> </li>
         </ul>
         <ul class="nav">
-          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-miscellaneous.html">Miscellaneous</a> </li>
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-miscellaneous.mhtm="><strong>Miscellaneous</strong></a> </li>
         </ul>
         <ul class="nav">
-          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-strings.html"><strong>Strings</strong></a> </li>
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-strings.html">Strings</a> </li>
         </ul>
     </div>
     
     <div class="col-md-9">
-        <h3>substr</h3>
-        <p></p><h4>{@substr str=string begin=b end=e len=l /}</h4><p></p>
-        <p></p><p><em>Output a substring of a string</em></p><p></p>
+        <h3>extend</h3>
+        <p></p><h4>{@extend helper=string|filter=string /}code{/extend}</h4><p></p>
+        <p></p><p><em>Define ad hoc custom helper or filter</em></p><p></p>
 	<p></p><p>Parameters:
 	<ul>
-		  <li>str : Original string</li>
-		  <li>begin : Optional parameter specifying starting character postion. If omitted, it defaults to 0. </li>
-		  <li>end :  Parameter specifying ending character postion.</li>
-		  <li>len : Parameter specifying length of substring.</li>
+		  <li>helper : string specifying name of the helper
+		  <li>filter : string specifying the name of the filter
 	</ul>
     </p>
-    <p>You can use begin with either end or len. If both are present, len is used. If len is present, str.substr(begin, len)
-    is used to determine the result and the semantics of JavaScript substr apply. If end is present, str.slice(begin, end)
-    is used to determine the result and the semantics of JavaScript slice apply. If both end and len are omitted,
-    you get the whole string as the result.
+    <p>The body of the extend tag has the JavaScript defining a custom helper named by the helper param or it 
+    contains the JavaScript defining a custom filter named by the filter param.
     </p>
 
     <p>Examples:
 
 <pre><code>
-{@substr str="abcdefg" begin="0" end="3"/}
-  Output: abc
+{@extend  helper="assist"}
+function assist (chk, ctx, bodies, params) {
+        var key = dust.helpers.tap(params.key, chk, ctx);
+        return chk.write(key + key);
+}
+{/extend}
+{@assist key="go"/}
 
-{@substr str="abcdefg" begin="1" len="4"/}
-  Output: bcde
+{@extend filter="my"}
+function myfilter(string) {return  "***" + string + "***"; };
+{/extend}
+
+FILTERED: {str | my}
 </code></pre>
     </p>
   </div>
