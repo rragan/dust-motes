@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="description" content="Dust-motes : Repository for contributed helper and filter extensions to dust">
+	<link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css"></link>
+
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+	<script src="http://cdn.jsdelivr.net/jquery/2.0.3/jquery-2.0.3.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+    <title>Dust-motes</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div class="hdr">
+	<h1 class="hdr-title">Dust-motes</h1>
+	<h2 class="desc">HELPERS / DATA
+    </h2></div>
+  
+    
+  <div class="row">
+    <div class="col-md-2">
+     <ul class="nav">
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-control.html">Control</a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-data.html"><strong>Data</strong></a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-html.html">HTML</a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-miscellaneous.html">Miscellaneous</a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-strings.html">Strings</a> </li>
+        </ul>
+    </div>
+    
+    <div class="col-md-9">
+        <h3>provide</h3>
+        <p></p><h4>{@provide [optional parameters]}blocks{/provide}</h4><p></p>
+	<p></p><p><em>Provide rich parameter definitions</em></p><p></p>
+
+	<p>There are a number of cases where you may want to define a value for a parameter to be more complex
+	than just the basic forms allowed by dust; viz p="abc", p=xyz, p="{xyz}". A very common case is to
+	want the value from a helper function like {@size} that you can pass to a partial or test.
+	@provide lets you capture that value and reference it like a parameter.</p>
+
+	<p>The general form of @provide is</p><p></p>
+
+<pre><code>
+    {@provide [optional params]}
+      main block of dust
+      {:block1}
+        evaluation of this block defines a param named "block1"
+      {:block2}
+        evaluation of this block defines a param named "block2"
+      ... as many blocks as you need params
+    {/provide} 
+</code></pre>
+
+<p>Rules:</p>
+<ul>
+<li>The text in a param block must evaluate to a valid JSON object. constants, strings, array [ ], object { } are the main legal forms.</li>
+<li>a param on the @provide helper can be used in the main block and all param blocks</li>
+<li>params defined by the blocks can be used in the main block</li>
+<li>If a block name duplicates a param name, the block name overrides in the main block although the param can be used in the block param definitions</li>
+</ul>
+
+        <p></p><p>Examples:
+          <p>
+<pre><code>
+    Find the size of an array and pass the value to a partial
+    {@provide}
+      {>partial size=len /}
+    {:len}
+      {@size key=array /}
+    {/provide}
+</code></pre>
+
+<pre><code>
+    Create an ad hoc list of month numbers for a dropdown without the controller supplying them
+    {@provide selected=chosen}
+      <select name="months">
+        {#months}
+          <option value="{.}"{@if cond="'{selected}' == '{.}'"} selected="selected"{/if}>{.}</option>
+        {/months}
+      </select>
+    {:months}
+      [1,2,3,4,5,6,7,8,9,10,11,12]
+    {/provide}
+</code></pre>
+
+<pre><code>
+    Create an ad hoc structure to pass to a partial that expects a particular structure
+
+    {@provide}
+      {>displayAddress data=struct}
+    {:struct}
+      {"street":"{homeStreet}", "city":"{homeCity}", "state": "{homeState}" }
+    {/provide}
+</code></pre>
+    </p>
+  </div>
+</div>
+
+</body></html>
