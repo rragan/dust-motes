@@ -79,37 +79,36 @@
         <p></p><p>Examples:
           <p>
 <pre><code>
-    Find the size of an array and pass the value to a partial
-    {@provide}
-      {>partial size=len /}
-    {:len}
-      {@size key=array /}
-    {/provide}
+Find the size of an array and pass the value to a partial
+{@provide}
+  {>partial size=len /}
+{:len}
+  {@size key=array /}
+{/provide}
 </code></pre>
 
 <pre><code>
-    Create an ad hoc list of month numbers for a dropdown without the controller supplying them
-    {@provide selected=chosen}
-      &lt;select name="months">
-        {#months}
-          &lt;option value="{.}"{@if cond="'{selected}' == '{.}'"} selected="selected"{/if}>{.}&lt;/option>
-        {/months}
-      &lt;/select>
-    {:months}
-      [1,2,3,4,5,6,7,8,9,10,11,12]
-    {/provide}
+Create an ad hoc list of month numbers for a dropdown without the controller supplying them
+{@provide selected=chosen}
+  &lt;select name="months">
+    {#months}
+      &lt;option value="{.}"{@if cond="'{selected}' == '{.}'"} selected="selected"{/if}>{.}&lt;/option>
+    {/months}
+  &lt;/select>
+{:months}
+  [1,2,3,4,5,6,7,8,9,10,11,12]
+{/provide}
 </code></pre>
 
 <pre><code>
-    Create an ad hoc structure to pass to a partial that expects a particular structure
-
-    {@provide}
-      {>displayAddress data=struct}
-    {:struct}
-      {"street":"{homeStreet}", "city":"{homeCity}", "state": "{homeState}" }
-    {/provide}
+Create an ad hoc structure to pass to a partial that expects a particular structure
+{@provide}
+  {>displayAddress data=struct}
+{:struct}
+  {"street":"{homeStreet}", "city":"{homeCity}", "state": "{homeState}" }
+{/provide}
 </code></pre>
-    </p>
+ </p>
   </div>
 </div>
 
