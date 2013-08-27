@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="description" content="Dust-motes : Repository for contributed helper and filter extensions to dust">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/stylesheet.css"></link>
+
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+	<script src="http://cdn.jsdelivr.net/jquery/2.0.3/jquery-2.0.3.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<title>Dust-motes</title>
+  </head>
+
+  <body>
+
+    <div class="hdr">
+          <h1 class="hdr-title">Dust-motes</h1>
+          <h2 class="desc">HELPERS / HTML
+    </h2></div>
+  
+  
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+        <ul class="nav">
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-control.html">Control</a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-data.html">Data</a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-html.html"><strong>HTML<strong></a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-miscellaneous.html">Miscellaneous</a> </li>
+        </ul>
+        <ul class="nav">
+          <li> <a href="http://rragan.github.io/dust-motes/docs/helpers-strings.html">Strings</a> </li>
+        </ul>
+    </div>
+    
+    <div class="col-md-9">
+        <h3>layout</h3>
+        <p></p><h4>{@layout base=string} blocks {/layout}</h4><p></p>
+        <p></p><p><em>Page layout support with multi-level inheritance</em></p><p></p>
+	<p></p><p>Parameters:
+	<ul>
+		  <li><code>base</code> : name of parent template
+	</ul>
+    </p>
+    <p>dust provides a simple mechanism for defining a base template with default values for replaceable areas of
+    the template. A child template can then specify it's parent (or base) template. However, the way it is 
+    handled allows only one level of inheritance and has problems if you want to dynamically select which parent
+    template you want to use.</p>
+    <p>This helper leverages the existing dust base template mechanism {+name} for defining areas of the template
+    that can be overriden by a child template. If you have a base template, you can continue to use it, as is.
+    The child template uses the base parameter to specify the name of the parent template (partial). Within the
+    body of the @layout helper, supply one or more {:blocks} with names matching the {+name} block in the 
+    parent that you want to override.  Any blocks you don't override, get the parent's default value.
+    </p>
+
+    <p>Examples:
+
+<pre><code>
+base_template
+Start{~n}{+title}Base Title{/title}{~n}{+main}Base Content{/main}{~n}End
+
+child_template
+{@layout base="base_template"}{:title}Child title{:main}Child Content{/layout}
+
+extend_child_template
+{@layout base="child_template"}{:title}Childish title{:main}Childish Content{/layout}
+
+will output
+Start
+Childish title
+Childish Content
+End
+
+If the extend_child_template was
+{@layout base="child_template"}{:main}Childish Content{/layout}
+
+the output would be
+Start
+Child title
+Childish Content
+End
+
+if extend_child_template and child_template omit the {:title} block the output is
+Start
+Base Title
+Childish Content
+End
+</code></pre>
+    </p>
+  </div>
+</div>
+</div>
+
+
+</body></html>
