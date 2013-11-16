@@ -1,3 +1,4 @@
+(function(dust){
 dust.helpers.provide = function provide(chunk, ctx, bodies, params) {
   'use strict';
   var resData,
@@ -24,4 +25,4 @@ dust.helpers.provide = function provide(chunk, ctx, bodies, params) {
   return bodies.block(chunk, localCtx.push(paramVals));
 
 };
-
+}) (typeof exports !== 'undefined' ? module.exports = require('dustjs-linkedin') : dust);

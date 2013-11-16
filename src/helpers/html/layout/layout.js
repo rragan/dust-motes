@@ -1,15 +1,13 @@
-{
-  "name": "dustmotes-iterate",
-  "version": "0.0.1",
-  "author": "Richard Ragan",
-  "description": "iterate helper",
-  "main": "./iterate.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rragan/dust-motes.git"
-  },
-  "license": "MIT",
-  "engine": {
-    "node": ">=0.5"
-  }
-}
+(function(dust){
+dust.helpers.layout = function (chk, ctx, bodies, params) {
+    var base = dust.helpers.tap(params.base, chk, ctx),
+      prevBlocks = ctx.blocks ? ctx.blocks[ctx.blocks.length - 1] : {};
+
+    for (var key in prevBlocks) {
+        bodies[key] = prevBlocks[key];
+    }
+    ctx.blocks = [bodies];
+    return chk.partial(base, ctx, null);
+};
+}) (typeof exports !== 'undefined' ? module.exports = require('dustjs-linkedin') : dust);
+
