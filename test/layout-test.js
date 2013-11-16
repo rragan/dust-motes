@@ -1,7 +1,7 @@
 _console = console;
 dust = require('dustjs-linkedin');
 require('dustjs-helpers');
-require('../src/helpers/html/layout.js');
+require('../src/helpers/html/layout');
 var assert = require('assert');
 
 var body = 'Start{+title}Base Title{/title}{+main}Base Content{/main}{+foot}base footer{/foot}End';

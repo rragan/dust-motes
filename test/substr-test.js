@@ -1,6 +1,6 @@
 dust = require('dustjs-linkedin');
 require('dustjs-helpers');
-require('../src/helpers/strings/substr.js');
+require('../src/helpers/strings/substr');
 var assert = require('assert');
 
 describe('Substr', function() {

@@ -1,3 +1,4 @@
+(function(dust){
 dust.helpers.substr = function (chunk, ctx, bodies, params) {
 // Get the values of all the parameters. The tap function takes care of resolving any variable references
 // used in parameters (e.g. param="{name}"
