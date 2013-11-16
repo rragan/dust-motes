@@ -1,3 +1,5 @@
+(function(dust){
+
 /**
  * iterate helper, loops over given object.
  * Inspired: https://github.com/akdubya/dustjs/issues/9
@@ -81,3 +83,4 @@ dust.helpers.iterate = function (chunk, context, bodies, params) {
   return chunk;
 
 };
+}) (typeof exports !== 'undefined' ? module.exports = require('dustjs-linkedin') : dust);
