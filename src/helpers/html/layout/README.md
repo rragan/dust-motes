@@ -1,0 +1,45 @@
+# layout helper, page layout support with multi-level inheritance
+
+## Definition
+
+```
+{@layout base=string}blocks{/layout}
+
+base - name of parent template
+```
+
+## Example
+
+Base templates are written using the normal dust {+xxx} syntax for replaceable content blocks.
+
+```
+base_template.dust
+Start{~n}{+title}Base Title{/title}{~n}{+main}Base Content{/main}{~n}End
+```
+Then using
+
+{@layout base="base_template"}{:title}Child title{:main}Child Content{/layout}
+
+will output
+
+```
+Start
+Child title
+Child Content
+End
+```
+
+If either the title or main block was omitted, the default value from the
+base template will be output.
+
+## Usage
+Depends on dustjs-helpers module to be loaded first since it defines
+the dust.helpers property.
+
+In node.js:
+require('dustmotes-iterate');
+
+In browser:
+If not using require, load the JS some other way and call it with the dust object. As noted earlier,
+dustjs-helpers must be loaded earlier.
+
