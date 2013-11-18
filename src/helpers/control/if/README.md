@@ -23,7 +23,10 @@ Constants are JavaScript integer, float, hex and string forms ("xx" or 'xx').
 Operands can be a "variable", a constant, or a binary or unary expression yielding a value. 
 Relational operators are <, >, <=, >=, ==, !=. Boolean operators are ! (unary), || and &&.. 
 Operator precedence is the same as JavaScript and parentheses are allowed for clarity or for when the precedence is not what you want.
-Expressions are easier to write because names and paths do not have to be wrapped in braces or braces within quotes. E.g. {@if cond="\'{state}\' == 'CA' "} versus {@if test="state == 'CA'}
+Expressions are easier to write because names and paths do not have to be wrapped in braces or braces within quotes.  For example,
+```
+{@if cond="\'{state}\' == 'CA' "} versus {@if test="state == 'CA'}
+```
 
 ## Examples
 ```
