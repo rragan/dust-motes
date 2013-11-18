@@ -1,7 +1,7 @@
 _console = console;
 dust = require('dustjs-linkedin');
 require('dustjs-helpers');
-require('../src/helpers/control/iterate');
+require('../src/helpers/control/iterate/iterate');
 var assert = require('assert');
 
 var compareNumbers = function(a,b) {var aa= parseInt(a, 10); var bb = parseInt(b, 10);return aa-bb;}

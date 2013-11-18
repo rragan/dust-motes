@@ -1,4 +1,6 @@
-# iterate helper, loops over given object.
+# iterate helper 
+
+Loops over given object.
 
 ## Definition 
 

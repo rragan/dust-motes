@@ -1,7 +1,7 @@
 _console = console;
 dust = require('dustjs-linkedin');
 require('dustjs-helpers');
-require('../src/helpers/data/provide');
+require('../src/helpers/data/provide/provide');
 var assert = require('assert');
 
 describe('provide', function () {

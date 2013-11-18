@@ -1,4 +1,6 @@
-# layout helper, page layout support with multi-level inheritance
+# layout helper 
+
+Page layout support with multi-level inheritance
 
 ## Definition
 
@@ -37,7 +39,7 @@ Depends on dustjs-helpers module to be loaded first since it defines
 the dust.helpers property.
 
 In node.js:
-require('dustmotes-iterate');
+require('dustmotes-layout');
 
 In browser:
 If not using require, load the JS some other way and call it with the dust object. As noted earlier,

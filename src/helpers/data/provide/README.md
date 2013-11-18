@@ -1,4 +1,6 @@
-# provide helper, provide rich dust parameter definitions.
+# provide helper 
+
+Provide rich dust parameter definitions.
 
 ## Definition
 

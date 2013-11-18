@@ -1,4 +1,6 @@
-# extend helper, Define ad hoc custom helper or filter
+# extend helper 
+
+Define ad hoc custom helper or filter
 
 ## Definition
 
@@ -35,7 +37,7 @@ Depends on dustjs-helpers module to be loaded first since it defines
 the dust.helpers property.
 
 In node.js:
-require('dustmotes-iterate');
+require('dustmotes-extend');
 
 In browser:
 If not using require, load the JS some other way and call it with the dust object. As noted earlier,

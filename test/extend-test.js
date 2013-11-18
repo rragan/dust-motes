@@ -1,6 +1,6 @@
 dust = require('dustjs-linkedin');
 require('dustjs-helpers');
-require('../src/helpers/miscellaneous/extend');
+require('../src/helpers/miscellaneous/extend/extend');
 var assert = require('assert');
 
 describe('extend', function() {
