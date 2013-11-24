@@ -1,3 +1,4 @@
+/*global dust: true */
 dust = require('dustjs-linkedin');
 require('dustjs-helpers');
 require('../src/helpers/strings/substr/substr');

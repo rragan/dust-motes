@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      helpers: ['src/**/*.js']
+      all:  ['if.js', 'src/**/*.js', 'test/**/*.js']
     },
 
     // Clean test files before building or re-testing.
@@ -41,6 +41,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-simple-mocha');
 
   // By default, build templates using helpers and run all tests.
-  grunt.registerTask('jshint',  ['jshint']);
+  grunt.registerTask('validate',  ['jshint:all']);
   grunt.registerTask('test',  ['simplemocha']);
 };

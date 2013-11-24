@@ -1,10 +1,9 @@
-_console = console;
-dust = require('dustjs-linkedin');
+require('dustjs-linkedin');
 require('dustjs-helpers');
 require('../src/helpers/control/iterate/iterate');
 var assert = require('assert');
 
-var compareNumbers = function(a,b) {var aa= parseInt(a, 10); var bb = parseInt(b, 10);return aa-bb;}
+var compareNumbers = function(a,b) {var aa= parseInt(a, 10); var bb = parseInt(b, 10);return aa-bb;};
 
 describe('iterate', function() {
 	it('simple object iteration', function() {
@@ -51,7 +50,7 @@ describe('iterate', function() {
 	}),
 	it('iterate with user-supplied compare function for numeric sort', function() {
 		var context = { obj: {10:"C", 1:"A", 300:"B" } };
-                var base = dust.makeBase({"compareNumbers": compareNumbers});
+		var base = dust.makeBase({"compareNumbers": compareNumbers});
 		var code = '{@iterate key=obj sort="compareNumbers"}{$key}:{$value} {/iterate}';
 		dust.renderSource(code, base.push(context), function (err, out) {
 			assert.equal(out,'1:A 10:C 300:B ');

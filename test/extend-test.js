@@ -1,8 +1,9 @@
-dust = require('dustjs-linkedin');
+require('dustjs-linkedin');
 require('dustjs-helpers');
 require('../src/helpers/miscellaneous/extend/extend');
 var assert = require('assert');
 
+/*jshint expr:true */
 describe('extend', function() {
 	it('adding a new ad hoc helper', function() {
 		var code = '{@extend helper="adhoc"}function adhoc(chk,ctx,bodies,params) {return chk.write("adhoc");}{/extend}{@adhoc/}';

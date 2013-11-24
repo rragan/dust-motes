@@ -1,4 +1,4 @@
-_console = console;
+/*global dust: true */
 dust = require('dustjs-linkedin');
 require('dustjs-helpers');
 require('../src/helpers/html/layout/layout');
