@@ -4,7 +4,7 @@ Loops over given object.
 
 ## Definition 
 
-``
+```
 {@iterate key=obj}{$key}-{$value} of type {$type}{~n}{/iter}
 
 key - object of the iteration - Mandatory parameter
