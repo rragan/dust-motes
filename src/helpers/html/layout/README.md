@@ -34,6 +34,9 @@ End
 If either the title or main block was omitted, the default value from the
 base template will be output.
 
+If params are supplied on the @layout, then they can be referenced in the base template for 
+substitution and in the definition blocks defining the subsitutions in the layout.
+
 ## Usage
 Depends on dustjs-helpers module to be loaded first since it defines
 the dust.helpers property.
