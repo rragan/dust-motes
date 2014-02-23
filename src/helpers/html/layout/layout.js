@@ -7,6 +7,6 @@
       bodies[key] = prevBlocks[key];
     }
     ctx.blocks = [bodies];
-    return chk.partial(base, ctx, null);
+    return chk.partial(base, ctx, params);
   };
 })(typeof exports !== 'undefined' ? module.exports = require('dustjs-linkedin') : dust);
