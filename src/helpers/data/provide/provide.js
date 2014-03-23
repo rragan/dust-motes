@@ -2,6 +2,7 @@
   dust.helpers.provide = function provide(chunk, ctx, bodies, params) {
     'use strict';
     var resData,
+      blockData,
       paramVals = {},
       k,
       localCtx = ctx,
@@ -14,7 +15,12 @@
     for (k in bodies) {
       if (k !== 'block') {
         chunk.data = [];
-        resData = JSON.parse(bodies[k](chunk, localCtx).data.join(''));
+        try {
+          blockData = bodies[k](chunk, localCtx).data.join('');
+          resData = JSON.parse(blockData);
+        } catch (e) {
+          resData = blockData; // not valid JSON so just return raw data
+        }
         paramVals[k] = resData;
       }
     }

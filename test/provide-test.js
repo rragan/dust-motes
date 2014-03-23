@@ -68,6 +68,13 @@ describe('provide', function () {
       assert.equal(out, '3.1415');
     });
   }),
+  it('Handle invalid JSON', function () {
+    var context = {};
+    var code = '{@provide}{param}{:param}{bad{/provide}';
+    dust.renderSource(code, context, function (err, out) {
+      assert.equal(out, '{bad');
+    });
+  }),
   it('capture helper value in object', function () {
     var context = {
       obj: [1, 2, 3, 4, 5, 6]
