@@ -1,7 +1,7 @@
 (function (dust) {
 
-  dust.helpers.
-  if = function (chunk, context, bodies, params) {
+  dust.helpers['if'] =
+    function (chunk, context, bodies, params) {
     var body = bodies.block,
       result,
       test,
